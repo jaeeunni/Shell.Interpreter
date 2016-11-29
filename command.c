@@ -111,3 +111,43 @@ void cmd_rmdir(int ac, char *av[])
 		fprintf(stderr, "Remove directory failed.\n");
 	}
 }
+
+int cmd_mkdir(int argc,char **argv)
+{
+	if(argc!=2)
+	{
+		fprintf(stderr, "Not enough argumnets.\n");
+		return 1;
+	}
+	
+	else
+	{
+		mkdir(argv[1],0755);
+		return 1;
+	}
+}
+
+int cmd_cat(int argc,char **argv)
+{
+	char ch;
+	int fd;
+
+	if(argc!=2)
+	{
+		fprintf(stderr, "Not enough arguments.\n");
+		return 1;
+	}
+	else
+	{
+		fd=open(argv[1],O_RDONLY);
+		
+		while(read(fd,&ch,1))
+		{
+			write(1,&ch,1);
+		}
+		close(fd);
+		return 0;
+	}
+}
+
+

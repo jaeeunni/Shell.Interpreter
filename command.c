@@ -112,6 +112,66 @@ void cmd_rmdir(int ac, char *av[])
 	}
 }
 
+void cmd_ls(int ac, char *av[])
+{
+	DIR *dp;
+	char *path;
+	int count;
+	int opt_a;
+	int opt_l;
+
+	if(ac <2)
+	{
+		path=".";
+	}
+
+	else
+	{
+		path = av[1];
+	}
+
+	if((dp = opendir(path)) == NULL)
+	{
+		fprintf(stderr, "Can't open directory: %s", av[1]);
+		return;
+	}
+
+	opt_a = check_arg(av, "-a");
+	opt_l = check_arg(av, "-l");
+	count = 0;
+
+	while((entry = readdir(dp)) != NULL)
+	{
+		if(!opt_a)
+		{
+			if(entry->d_name[0] == '.')
+			{
+				continue;
+			}
+		}
+		
+		printf("%s\t", entry->d_name);
+		if(opt_l)
+		{
+			printf("\n");
+		}
+		
+		else
+		{
+			if(count > 5)
+			{
+				printf("\n");
+				count = 0;
+			}
+			else
+			{
+				count++;
+			}
+		}
+	}
+	closedir(dp);
+	printf("\n");
+}
 int cmd_mkdir(int argc,char **argv)
 {
 	if(argc!=2)

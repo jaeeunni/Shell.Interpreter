@@ -91,6 +91,18 @@ BOOLEAN shellcmd(int ac, char *av[], int sourcefd, int destfd)
 	{
 		cmd_exit();
 	}
+	else if(!strcmp(av[0], "mkdir"))
+	{
+		cmd_mkdir();
+	}
+	else if(!strcmp(av[0], "mv"))
+	{
+		cmd_mv();
+	}
+	else if(!strcmp(av[0], "cat"))
+	{
+		cmd_cat();
+	}
 	else
 	{
 		return FALSE;

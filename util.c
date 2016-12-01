@@ -4,6 +4,7 @@
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include "common.h"
 
 void fatal(char *message)
 {

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <dirent.h>
 #include <sys/types.h>
+#include "common.h"
 
 int check_arg(char *av[], const char *opt)
 {
@@ -172,6 +173,7 @@ void cmd_ls(int ac, char *av[])
 	closedir(dp);
 	printf("\n");
 }
+
 int cmd_mkdir(int argc,char **argv)
 {
 	if(argc!=2)

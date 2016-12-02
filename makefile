@@ -1,4 +1,4 @@
-C		= gcc
+CC		= gcc
 CFLAGS		= -g -Wall
 OUTPUT		= myshell
 OBJFILES	= execute.o parser.o redirect.o symbol.o util.o command.o

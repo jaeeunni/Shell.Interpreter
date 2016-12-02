@@ -118,6 +118,7 @@ void cmd_rmdir(int ac, char *av[])
 void cmd_ls(int ac, char *av[])
 {
 	DIR *dp;
+	struct dirent *entry;	
 	char *path;
 	int count;
 	int opt_a;

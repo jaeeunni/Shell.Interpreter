@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "common.h"
+#include "../include/common.h"
 
 typedef enum {NEUTRAL, GTGT, INQUOTE, INWORD} STATUS;
 

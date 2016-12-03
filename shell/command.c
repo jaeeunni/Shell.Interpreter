@@ -4,7 +4,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
-#include "common.h"
+#include "../include/common.h"
 
 int check_arg(char *av[], const char *opt)
 {

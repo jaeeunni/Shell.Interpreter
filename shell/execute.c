@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "common.h"
+#include "../include/common.h"
 
 int execute(int ac, char *av[], int sourcefd, char *sourcefile, int destfd, char *destfile,
 	BOOLEAN append, BOOLEAN backgrnd)

@@ -179,13 +179,13 @@ void cmd_ls(int ac, char *av[])
 
 int cmd_mkdir(int argc,char **argv)
 {
-	if(argc!=2)
+	if(argc!=2) //error
 	{
 		fprintf(stderr, "Not enough argumnets.\n");
 		return 1;
 	}
 	
-	else
+	else 
 	{
 		mkdir(argv[1],0755);
 		return 1;
@@ -194,23 +194,23 @@ int cmd_mkdir(int argc,char **argv)
 
 int cmd_cat(int argc,char **argv)
 {
-	char ch;
-	int fd;
+	char c;
+	int f; // file discriptor
 
-	if(argc!=2)
+	if(argc!=2) //error
 	{
 		fprintf(stderr, "Not enough arguments.\n");
 		return 1;
 	}
 	else
 	{
-		fd=open(argv[1],O_RDONLY);
+		f=open(argv[1],O_RDONLY); // file open for read mode
 		
-		while(read(fd,&ch,1))
+		while(read(f,&c,1))  
 		{
-			write(1,&ch,1);
+			write(1,&c,1); //printf per 1 byte 
 		}
-		close(fd);
+		close(f);
 		return 0;
 	}
 }
@@ -218,15 +218,16 @@ int cmd_cat(int argc,char **argv)
 
 int cmd_mv(int argc, char*argv[])
 {
-	int fd1,fd2;
+	// cp+mv 
+	int fd1,fd2; 
 	int r_size,w_size;
 	char buf[100];
 
-	fd1=open(argv[1],O_RDONLY);
-	fd2=open(argv[2],O_RDWR|O_CREAT|O_EXCL,0664);
+	fd1=open(argv[1],O_RDONLY); // open for original file
+	fd2=open(argv[2],O_RDWR|O_CREAT|O_EXCL,0664); // oepn for mv file
 
-	r_size=read(fd1,buf,100);
-	w_size=write(fd2,buf,r_size);
+	r_size=read(fd1,buf,100); // read for original file
+	w_size=write(fd2,buf,r_size); // write for mv file
 	while(r_size==100)
 	{
 		r_size=read(fd1,buf,100);
